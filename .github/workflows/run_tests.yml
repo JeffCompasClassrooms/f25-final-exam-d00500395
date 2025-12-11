@@ -1,0 +1,50 @@
+# Final Exam Workflow, written by Ayden Wayman - A7W13
+
+
+name: Run Final Exam Tests
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+    test-brute:
+        runs-on: ubuntu-latest
+
+        steps:
+        -   name: Checkout code
+            uses: actions/checkout@v4
+
+        -   name: Set up Python
+            uses: actions/setup-python@v5
+            with:
+                python-version: '3.12'
+
+        -   name: Install dependencies
+            run: |
+                python -m pip install --upgrade pip
+                pip install pytest pytest-describe
+
+        -   name: Run test_brute.py
+            run: |
+                pytest test_brute.py --spec -v
+
+    test-christmas-list:
+        runs-on: ubuntu-latest
+
+        steps:
+        -   name: Checkout code
+            uses: actions/checkout@v4
+
+        -   name: Set up Python
+            uses: actions/setup-python@v5
+            with:
+                python-version: '3.12'
+
+        -   name: Install dependencies
+            run: |
+                python -m pip install --upgrade pip
+                pip install pytest pytest-describe
+
+        -   name: Run test_christmas_list.py
+            run: |
+                pytest test_christmas_list.py --spec -v
